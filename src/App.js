@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from 'react'
 
+import './App.css';
+import Header from './components.js/Header';
+import Hero from './components.js/Hero';
+import About from './Pages/About';
+import Sponcers from './Pages/Sponcers';
+import Contact from './Pages/Contact';
+import Dropdown from './components.js/Dropdown';
 function App() {
+   
+  const [isopen, setisopen] = useState(false);
+
+  const toggle=()=>{
+    setisopen(!isopen);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Header toggle={toggle}/>
+        <Dropdown isopen={isopen} toggle={toggle}/>
+        <Hero/>
+        <About/>
+        <Sponcers/>
+        <Contact/>
     </div>
   );
 }
